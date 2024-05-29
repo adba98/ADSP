@@ -20,7 +20,7 @@ public class LoggerFrame extends JFrame {
     private JButton exitButton;
 
     public LoggerFrame() {
-        super(" Factory Method Pattern - Example ");
+        super("Singleton Pattern - Example");
         initComponents();
         setupLayout();
     }
