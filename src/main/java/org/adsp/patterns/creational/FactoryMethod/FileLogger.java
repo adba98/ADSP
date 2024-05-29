@@ -1,5 +1,6 @@
 package org.adsp.patterns.creational.FactoryMethod;
 
+import org.adsp.utils.models.Logger;
 import org.adsp.utils.FileUtil;
 
 public class FileLogger implements Logger {

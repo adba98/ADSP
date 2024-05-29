@@ -1,31 +1,15 @@
 package org.adsp.patterns.creational.FactoryMethod;
 
-import java.io.IOException;
-import java.util.Properties;
+import org.adsp.utils.models.Logger;
+
+import java.util.Objects;
 
 public class LoggerFactory {
-    public int isFileLoggingEnabled() {
-        Properties p = new Properties();
-        try {
-            p.load(ClassLoader.getSystemResourceAsStream("Output.type"));
-            String fileLoggingValue = p.getProperty("Output");
-            System.out.println("Writing to " + fileLoggingValue);
-            if (fileLoggingValue.equalsIgnoreCase("FILE")) {
-                return 1;
-            } else if (fileLoggingValue.equalsIgnoreCase("CONSOLE")) {
-                return 2;
-            } else {
-                System.out.println("The output type was not defined or not recognized.Using the default output: Console");
-                return 2;
-            }
-        } catch (IOException e) {
-            System.out.println("The output type was not available.Using the default output: Console");
-            return 2;
+    public Logger getLogger(String selection) {
+        if (Objects.equals(selection, "File")) {
+            return new FileLogger();
+        } else {
+            return new ConsoleLogger();
         }
-    }
-
-    public Logger getLogger() {
-        if (isFileLoggingEnabled() == 1) return new FileLogger();
-        else return new ConsoleLogger();
     }
 }

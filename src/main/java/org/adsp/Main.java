@@ -1,12 +1,17 @@
 package org.adsp;
 
-import org.adsp.patterns.creational.FactoryMethod.Logger;
-import org.adsp.patterns.creational.FactoryMethod.LoggerFactory;
+import org.adsp.gui.LoggerFrame;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
-        LoggerFactory factory = new LoggerFactory();
-        Logger logger = factory.getLogger();
-        logger.log("Write the message to selected output");
+        EventQueue.invokeLater(() -> {
+            JFrame frame = new LoggerFrame();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(1050, 550);
+            frame.setVisible(true);
+        });
     }
 }
