@@ -1,0 +1,1 @@
+# Architectural Design of Software Patterns
