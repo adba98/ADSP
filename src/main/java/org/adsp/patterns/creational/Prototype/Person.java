@@ -23,10 +23,6 @@ public class Person implements Cloneable {
     }
 
     public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            return null;
-        }
+        return new Person(name, car.getName());
     }
 }
