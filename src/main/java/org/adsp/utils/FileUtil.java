@@ -1,8 +1,7 @@
 package org.adsp.utils;
 
-import java.io.DataOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.util.Vector;
 
 public class FileUtil {
     public void writeToFile(String fileName, String dataLine, boolean isAppendMode, boolean isNewLine) {
@@ -16,5 +15,20 @@ public class FileUtil {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public Vector<String> fileToVector(String fileName) {
+        Vector<String> v = new Vector<>();
+        String inputLine;
+        try {
+            File inFile = new File(fileName);
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
+            while ((inputLine = br.readLine()) != null) {
+                v.addElement(inputLine.trim());
+            }
+            br.close();
+        } catch (IOException ignored) {
+        }
+        return (v);
     }
 }
