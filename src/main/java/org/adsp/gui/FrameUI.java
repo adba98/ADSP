@@ -5,27 +5,37 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class FrameUI extends JFrame {
-    public static final String SHOW_ALL = "Show Certificates";
+    public static final String GET_CANDIDATES = "Show Certificates";
     public static final String EXIT = "Exit";
+    public static final String SUN = "Sun MicroSystems";
+    public static final String APACHE = "Apache Project";
+    public static final String APPLE = "Apple";
 
+    private JComboBox<String> cmbCertificationType;
     private JTextArea taSelectedCandidates;
-    private JLabel lblSelectedCandidates;
+    private JLabel lblCertificationType, lblSelectedCandidates;
     private JButton btnGetSelectedCandidates, exitButton;
 
     public FrameUI() {
-        super("Internal Iterator Pattern - Example");
+        super("External Iterator Pattern - Example");
         initComponents();
         setupLayout();
     }
 
     private void initComponents() {
+        cmbCertificationType = new JComboBox<>();
+        cmbCertificationType.addItem(SUN);
+        cmbCertificationType.addItem(APACHE);
+        cmbCertificationType.addItem(APPLE);
+
         taSelectedCandidates = new JTextArea(15, 20);
         taSelectedCandidates.setEditable(false);
 
-        lblSelectedCandidates = new JLabel("List :");
+        lblCertificationType = new JLabel("Certification Type:");
+        lblSelectedCandidates = new JLabel("Results:");
 
-        btnGetSelectedCandidates = new JButton(SHOW_ALL);
-        btnGetSelectedCandidates.setMnemonic(KeyEvent.VK_S);
+        btnGetSelectedCandidates = new JButton(GET_CANDIDATES);
+        btnGetSelectedCandidates.setMnemonic(KeyEvent.VK_R);
 
         exitButton = new JButton(EXIT);
         exitButton.setMnemonic(KeyEvent.VK_X);
@@ -40,6 +50,11 @@ public class FrameUI extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
         gbc.anchor = GridBagConstraints.WEST;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        buttonPanel.add(lblCertificationType, gbc);
+        gbc.gridx = 1;
+        buttonPanel.add(cmbCertificationType, gbc);
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 2;
@@ -56,6 +71,10 @@ public class FrameUI extends JFrame {
         buttonPanel.add(exitButton, gbc);
         getContentPane().add(buttonPanel, BorderLayout.CENTER);
         pack();
+    }
+    
+    public String getCertificationType() {
+        return (String) cmbCertificationType.getSelectedItem();
     }
 
     public void setSelectedCandidates(String selectedCandidates) {
