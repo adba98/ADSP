@@ -2,7 +2,6 @@ package org.adsp;
 
 import org.adsp.patterns.collections.Flyweight.FlyweightFactory;
 import org.adsp.patterns.collections.Flyweight.FlyweightIntr;
-import org.adsp.patterns.collections.Flyweight.IdCard;
 
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -18,8 +17,7 @@ public class Main {
             String code = st.nextToken();
             String faculty = st.nextToken();
             FlyweightIntr flyweight = factory.getFlyweight(faculty);
-            IdCard card = new IdCard(name, code, flyweight);
-            card.print();
+            flyweight.print(name, code);
         }
     }
 

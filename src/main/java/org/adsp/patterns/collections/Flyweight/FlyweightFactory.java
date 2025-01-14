@@ -78,5 +78,17 @@ public class FlyweightFactory {
         public String getCoordinates() {
             return coordinates;
         }
+
+        public void print(String name, String code) {
+            System.out.println("The Universidad Distrital's students are: ");
+            System.out.println("Student name and lastname: " + name);
+            System.out.println("Student code: " + code);
+            System.out.println("Faculty: " + getNameFac());
+            System.out.println("Locality: " + getLocality());
+            System.out.println("Address: " + getAddress());
+            System.out.println("Neighbourhood: " + getNeighbourhood());
+            System.out.println("Neighbourhood: " + getCoordinates());
+            System.out.println("----------------");
+        }
     }
 }

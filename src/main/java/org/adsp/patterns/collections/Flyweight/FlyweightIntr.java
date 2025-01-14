@@ -10,4 +10,6 @@ public interface FlyweightIntr {
     String getNeighbourhood();
 
     String getCoordinates();
+
+    void print(String name, String code);
 }
